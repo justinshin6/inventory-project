@@ -83,7 +83,12 @@ const generateToken = (id) => {
 // @route /api/users/me
 // @access Private
 const getMe = asyncHandler( async (req, res) => {
-    res.send('me')
+    const user = {
+        id: req.user._id,
+        email: req.user.email,
+        name: req.user.name,
+    }
+    res.status(200).json(user)
 })
 
 // export the functions to other fiiles
